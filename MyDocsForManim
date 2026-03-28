@@ -1,0 +1,251 @@
+1. Объекты (Mobjects)
+
+Геометрические
+
+    Circle — окружность
+
+    Square — квадрат
+
+    Triangle — треугольник
+
+    Rectangle — прямоугольник
+
+    Polygon — многоугольник
+
+    Line — линия
+
+    Arrow — стрелка
+
+    Dot — точка с заливкой
+
+    Point — точка
+
+Текст и формулы
+
+    Text — обычный текст
+
+    Tex — LaTeX формула
+
+    MathTex — математическая формула
+
+Системы координат
+
+    NumberPlane — координатная плоскость
+
+    Axes — оси координат
+
+    ThreeDAxes — 3D оси
+
+Группы и вспомогательные
+
+    VGroup — группа объектов
+
+    ImageMobject — изображение
+
+    Matrix — матрица
+
+    Table — таблица
+
+3D объекты
+
+    Sphere — сфера
+
+    Cube — куб
+
+    Cylinder — цилиндр
+
+2. Координатная система
+
+    Центр экрана: (0, 0, 0)
+
+    Ось X: вправо (+), влево (-)
+
+    Ось Y: вверх (+), вниз (-)
+
+    Ось Z: на зрителя (+), от зрителя (-)
+
+    Размер сцены: ширина ≈ 14, высота ≈ 8 единиц
+
+    1 единица ≈ 1 см на экране
+
+Константы
+
+    ORIGIN — центр
+
+    UP / DOWN — вверх/вниз
+
+    LEFT / RIGHT — влево/вправо
+
+    UL / UR / DL / DR — углы
+
+3. Размещение объектов
+
+Абсолютное
+
+    obj.move_to([x, y, z]) — в точку
+
+    obj.move_to(ORIGIN) — в центр
+
+    obj.to_edge(UP) — к краю
+
+    obj.to_corner(UL) — в угол
+
+Относительное
+
+    obj.next_to(other, RIGHT) — справа
+
+    obj.next_to(other, UP, buff=0.5) — сверху с отступом
+
+    obj.align_to(other, LEFT) — выровнять по краю
+
+Смещение
+
+    obj.shift(RIGHT * 2) — сдвиг
+
+    obj.shift(LEFT + DOWN) — влево и вниз
+
+Группы
+
+    VGroup(obj1, obj2) — создать группу
+
+    group.arrange(RIGHT) — выстроить
+
+    group.arrange_in_grid(2, 3) — сеткой
+
+Для треугольников
+
+    Середина стороны: (вершина1 + вершина2) / 2
+
+    Вектор нормали: перпендикуляр для смещения
+
+4. Анимации
+
+Появление и исчезновение
+
+    Create — постепенное рисование
+
+    FadeIn / FadeOut — плавное появление/исчезновение
+    при указании нескольких анимаций работает
+    одноврменно максимальным временем является
+    самое большое значение
+
+
+    Write — рукописный текст
+
+    DrawBorderThenFill — обвести, затем залить
+
+Трансформации
+
+    Transform — превращение объекта
+
+    ReplacementTransform — замена
+
+    TransformFromCopy — трансформация из копии
+
+Перемещение
+
+    obj.animate.shift(direction) — сдвиг
+
+    obj.animate.move_to(point) — переместить
+
+    obj.animate.next_to(other, dir) — к объекту
+
+    obj.animate.align_to(other, dir) — выровнять
+
+Вращение и масштаб
+
+    Rotate — вращение
+
+    Scale — масштабирование
+
+Специальные
+
+    Flash — вспышка
+
+    Indicate — выделение
+
+    Wiggle — покачивание
+
+    Circumscribe — обвести
+
+Сложные анимации
+
+    LaggedStart — с задержкой
+
+    Succession — последовательно
+
+    AnimationGroup — группа анимаций
+
+    Wait — пауза
+
+Параметры анимаций
+
+    run_time — длительность
+
+    rate_func — скорость
+
+        linear — равномерно
+
+        smooth — плавно
+
+        there_and_back — туда-обратно
+
+    path_arc — движение по дуге
+
+Updaters (постоянное движение)
+
+    obj.add_updater(func) — добавить обновление
+
+    obj.remove_updater(func) — удалить
+
+5. Качество и FPS
+
+Командная строка
+
+    -pql — 480p (low)
+
+    -pqm — 720p (medium)
+
+    -pqh — 1080p (high)
+
+    -pqk — 4K (ultra)
+
+    --fps=60 — частота кадров
+
+    --renderer=opengl — лучшее сглаживание
+
+В коде
+
+    config.pixel_width = 3840 — ширина
+
+    config.pixel_height = 2160 — высота
+
+    config.fps = 60 — кадры в секунду
+
+    config.background_color — цвет фона
+
+6. Компиляция (рендеринг)
+
+Команды
+
+    manim -pql my_scene.py MyScene — рендеринг с предпросмотром
+
+    manim -pqh my_scene.py — все сцены из файла
+
+    manim -pqk --format=gif my_scene.py MyScene — в GIF
+
+Структура проекта
+
+    my_scene.py — файл со сценами
+
+    manim.cfg — файл конфигурации
+
+    media/videos/ — папка с результатами
+
+Файл конфигурации (manim.cfg)
+
+    quality = high — качество по умолчанию
+
+    fps = 60 — частота кадров
+
+    media_dir = ./media — папка для сохранения
